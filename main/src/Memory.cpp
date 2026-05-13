@@ -49,7 +49,7 @@ uint16_t Memory::read_vend_l() {
   uint16_t c = EEPROM.read(2+_offset+12) << 8 | EEPROM.read(3+_offset+12);
   uint16_t vend_l = validate_2oo3(a, b, c);
   if (vend_l > 1023 || vend_l < 0) {    // falls erstes Mal Lesen da EEPROM mit 0xFF initialisiert
-    vend_l = 1023;
+    vend_l = 500;
   }
   Logger::get_instance().log_msg("virt Endanschlag links: ", false, PLOTTER);
   Logger::get_instance().log_num(vend_l, true, PLOTTER);
@@ -62,7 +62,7 @@ uint16_t Memory::read_vend_r() {
   uint16_t c = EEPROM.read(4+_offset+12) << 8 | EEPROM.read(5+_offset+12);
   uint16_t vend_r = validate_2oo3(a, b, c);
   if (vend_r > 1023 || vend_r < 0) {    // falls erstes Mal Lesen da EEPROM mit 0xFF initialisiert
-    vend_r = 1023;
+    vend_r = 500;
   }
   Logger::get_instance().log_msg("virt Endanschlag rechts: ", false, PLOTTER);
   Logger::get_instance().log_num(vend_r, true, PLOTTER);
