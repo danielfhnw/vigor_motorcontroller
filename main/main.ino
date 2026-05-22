@@ -39,6 +39,11 @@ void setup() {
   controller_r = Controller(MOT_R_FORW, MOT_R_BACKW, END_R_FORW, END_R_BACKW, 
     POS_R, BUT_R_FORW, BUT_R_BACKW, INVERTED_R, CANClass::get_instance().get_reg(REG_R_VEND));
   
+  if (DISABLE_WD_L_F) controller_l.get_motor().get_wd_f().disable();
+  if (DISABLE_WD_R_F) controller_r.get_motor().get_wd_f().disable();
+  if (DISABLE_WD_L_B) controller_l.get_motor().get_wd_b().disable();
+  if (DISABLE_WD_R_B) controller_r.get_motor().get_wd_b().disable();
+  
   Logger::get_instance().log_msg("Starting in Manual mode", true, !PLOTTER);
 }
 

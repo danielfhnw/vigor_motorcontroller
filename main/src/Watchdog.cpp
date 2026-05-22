@@ -32,7 +32,12 @@ bool Watchdog::check(uint16_t pos) {
 }
 
 bool Watchdog::get_fired() {
+  if (_disabled) return false;
   return _fired;
+}
+
+bool Watchdog::get_disabled() {
+  return _disabled;
 }
 
 void Watchdog::reset() {
