@@ -6,12 +6,14 @@ void Pinmap::init() {
     pinMode(MOT_L_BACKW, OUTPUT);
     pinMode(MOT_R_FORW, OUTPUT);
     pinMode(MOT_R_BACKW, OUTPUT);
-    pinMode(BUT_L_BACKW, INPUT);
-    pinMode(BUT_L_FORW, INPUT);
-    pinMode(BUT_R_FORW, INPUT);
-    pinMode(BUT_R_BACKW, INPUT);
+    pinMode(MUX_SEL, INPUT);
+    pinMode(MUX_A0, OUTPUT);
+    pinMode(MUX_A1, OUTPUT);
+    pinMode(MUX_A2, OUTPUT);
     pinMode(END_R_FORW, INPUT);
     pinMode(END_R_BACKW, INPUT);
     pinMode(END_L_FORW, INPUT);
     pinMode(END_L_BACKW, INPUT);
+    pinMode(BUT_OPEN, INPUT_PULLUP);
+    pinMode(BUT_CLOSE, INPUT_PULLUP);
 }
