@@ -18,7 +18,7 @@ void Pinmap::init() {
     pinMode(BUT_CLOSE, INPUT_PULLUP);
 }
 
-bool Pinmap::read_mux_sel(uint8_t channel) {
+bool Pinmap::read_dip_switch(uint8_t channel) {
   digitalWrite(MUX_A0, bitRead(channel, 0));
   digitalWrite(MUX_A1, bitRead(channel, 1));
   digitalWrite(MUX_A2, bitRead(channel, 2));

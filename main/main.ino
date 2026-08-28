@@ -35,14 +35,14 @@ void setup() {
   CANClass::get_instance().set_reg(REG_MEM_OFF, Memory::get_instance().get_offset());
   
   controller_l = Controller(MOT_L_FORW, MOT_L_BACKW, END_L_FORW, END_L_BACKW, 
-    POS_L, BUT_L_FORW, BUT_L_BACKW, INVERTED_L, CANClass::get_instance().get_reg(REG_L_VEND));
+    POS_L, BUT_L_FORW, BUT_L_BACKW, Pinmap::read_dip_switch(DIP_INVERTED_L), CANClass::get_instance().get_reg(REG_L_VEND));
   controller_r = Controller(MOT_R_FORW, MOT_R_BACKW, END_R_FORW, END_R_BACKW, 
-    POS_R, BUT_R_FORW, BUT_R_BACKW, INVERTED_R, CANClass::get_instance().get_reg(REG_R_VEND));
+    POS_R, BUT_R_FORW, BUT_R_BACKW, Pinmap::read_dip_switch(DIP_INVERTED_R), CANClass::get_instance().get_reg(REG_R_VEND));
   
-  if (DISABLE_WD_L_F) controller_l.get_motor().get_wd_f().disable();
-  if (DISABLE_WD_R_F) controller_r.get_motor().get_wd_f().disable();
-  if (DISABLE_WD_L_B) controller_l.get_motor().get_wd_b().disable();
-  if (DISABLE_WD_R_B) controller_r.get_motor().get_wd_b().disable();
+  if (Pinmap::read_dip_switch(DIP_DISABLE_WD_L_F)) controller_l.get_motor().get_wd_f().disable();
+  if (Pinmap::read_dip_switch(DIP_DISABLE_WD_R_F)) controller_r.get_motor().get_wd_f().disable();
+  if (Pinmap::read_dip_switch(DIP_DISABLE_WD_L_B)) controller_l.get_motor().get_wd_b().disable();
+  if (Pinmap::read_dip_switch(DIP_DISABLE_WD_R_B)) controller_r.get_motor().get_wd_b().disable();
   
   Logger::get_instance().log_msg("Starting in Manual mode", true, !PLOTTER);
 }

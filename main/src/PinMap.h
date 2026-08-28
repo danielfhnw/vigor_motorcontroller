@@ -44,5 +44,5 @@
 class Pinmap {
   public:
     static void init();
-    static bool read_mux_sel(uint8_t channel);
+    static bool read_dip_switch(uint8_t channel);
 };
