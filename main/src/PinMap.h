@@ -34,4 +34,5 @@
 class Pinmap {
   public:
     static void init();
+    static void selectMuxChannel(uint8_t channel);
 };
