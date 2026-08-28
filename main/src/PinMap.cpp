@@ -6,12 +6,22 @@ void Pinmap::init() {
     pinMode(MOT_L_BACKW, OUTPUT);
     pinMode(MOT_R_FORW, OUTPUT);
     pinMode(MOT_R_BACKW, OUTPUT);
-    pinMode(BUT_L_BACKW, INPUT);
-    pinMode(BUT_L_FORW, INPUT);
-    pinMode(BUT_R_FORW, INPUT);
-    pinMode(BUT_R_BACKW, INPUT);
+    pinMode(MUX_SEL, INPUT);
+    pinMode(MUX_A0, OUTPUT);
+    pinMode(MUX_A1, OUTPUT);
+    pinMode(MUX_A2, OUTPUT);
     pinMode(END_R_FORW, INPUT);
     pinMode(END_R_BACKW, INPUT);
     pinMode(END_L_FORW, INPUT);
     pinMode(END_L_BACKW, INPUT);
+    pinMode(BUT_OPEN, INPUT_PULLUP);
+    pinMode(BUT_CLOSE, INPUT_PULLUP);
+}
+
+bool Pinmap::read_dip_switch(uint8_t channel) {
+  digitalWrite(MUX_A0, bitRead(channel, 0));
+  digitalWrite(MUX_A1, bitRead(channel, 1));
+  digitalWrite(MUX_A2, bitRead(channel, 2));
+  delayMicroseconds(5);
+  return digitalRead(MUX_SEL);
 }

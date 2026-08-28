@@ -26,7 +26,7 @@ void Logger::log_num(float f, bool line, bool plot) {
   }
 }
 
-void Logger::log_msg(char* c, bool line, bool plot) {
+void Logger::log_msg(const String& c, bool line, bool plot) {
   if (plot) {
     if (line) {
       Serial.println(c);

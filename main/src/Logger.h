@@ -12,7 +12,7 @@ class Logger {
     static Logger& get_instance();
     void init();
     void log_num(float f, bool line, bool plot);
-    void log_msg(char* c, bool line, bool plot);
+    void log_msg(const String& c, bool line, bool plot);
     void log_err(uint16_t status);
     void reset_err_shout();
   private:
