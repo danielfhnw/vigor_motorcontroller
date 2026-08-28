@@ -39,11 +39,20 @@ void setup() {
   controller_r = Controller(MOT_R_FORW, MOT_R_BACKW, END_R_FORW, END_R_BACKW, 
     POS_R, BUT_OPEN, BUT_CLOSE, Pinmap::read_dip_switch(DIP_INVERTED_R), CANClass::get_instance().get_reg(REG_R_VEND));
   
+  Logger::get_instance().log_msg("Starting Vigor Motorcontroller", true, !PLOTTER);
+  Logger::get_instance().log_msg("Inverted left: " + String(Pinmap::read_dip_switch(DIP_INVERTED_L)), true, !PLOTTER);
+  Logger::get_instance().log_msg("Inverted right: " + String(Pinmap::read_dip_switch(DIP_INVERTED_R)), true, !PLOTTER);
+
   if (Pinmap::read_dip_switch(DIP_DISABLE_WD_L_F)) controller_l.get_motor().get_wd_f().disable();
   if (Pinmap::read_dip_switch(DIP_DISABLE_WD_R_F)) controller_r.get_motor().get_wd_f().disable();
   if (Pinmap::read_dip_switch(DIP_DISABLE_WD_L_B)) controller_l.get_motor().get_wd_b().disable();
   if (Pinmap::read_dip_switch(DIP_DISABLE_WD_R_B)) controller_r.get_motor().get_wd_b().disable();
-  
+
+  Logger::get_instance().log_msg("Left watchdog forward: " + String(!controller_l.get_motor().get_wd_f().get_disabled()), true, !PLOTTER);
+  Logger::get_instance().log_msg("Left watchdog backward: " + String(!controller_l.get_motor().get_wd_b().get_disabled()), true, !PLOTTER);
+  Logger::get_instance().log_msg("Right watchdog forward: " + String(!controller_r.get_motor().get_wd_f().get_disabled()), true, !PLOTTER);
+  Logger::get_instance().log_msg("Right watchdog backward: " + String(!controller_r.get_motor().get_wd_b().get_disabled()), true, !PLOTTER);
+
   Logger::get_instance().log_msg("Starting in Manual mode", true, !PLOTTER);
 }
 
