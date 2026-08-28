@@ -30,9 +30,19 @@
 #define POS_R 6  // input A6
 #define POS_L 7  // input A7
 
+// define dip-switch inputs
+#define DIP_INVERTED_L 0
+#define DIP_INVERTED_R 1
+#define DIP_DISABLE_WD_L_F 2
+#define DIP_DISABLE_WD_R_F 3
+#define DIP_DISABLE_WD_L_B 4
+#define DIP_DISABLE_WD_R_B 5
+#define DIP_UNUSED_1 6
+#define DIP_UNUSED_2 7
+
 // define the class
 class Pinmap {
   public:
     static void init();
-    static void selectMuxChannel(uint8_t channel);
+    static bool read_mux_sel(uint8_t channel);
 };
